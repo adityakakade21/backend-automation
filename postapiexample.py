@@ -6,13 +6,16 @@ from utilities.resources import *
 
 url = getConfig()['API']['endpoint']
 header={"Content-Type": "application/json"}
-addbook_response = requests.post(url+ApiResources.addBook,json=add_payload("12i887978"),headers=header,)
-#
+query = 'select * from Books'
+addbook_response = requests.post(url+ApiResources.addBook,json=buildPayloadFromDB(query),headers=header,)
+
 print(addbook_response.json())
+
+
 response_json = addbook_response.json()
-print(type(response_json))
+#print(type(response_json))
 book_id = response_json['ID']
-print(book_id)
+#print(book_id)
 
 # delete book
 

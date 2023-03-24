@@ -15,7 +15,7 @@ print(addbook_response.json())
 response_json = addbook_response.json()
 #print(type(response_json))
 book_id = response_json['ID']
-#print(book_id)
+print(book_id)
 
 # delete book
 

@@ -1,11 +1,11 @@
 from utilities.configurations import *
 
 
-def add_payload(isbn):
+def add_payload(isbn, aisle):
     body ={
     "name": "Devopsbasics",
     "isbn": isbn,
-    "aisle": "75",
+    "aisle": aisle,
     "author": "Aditya Kakade"
     }
 

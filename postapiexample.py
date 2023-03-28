@@ -31,8 +31,8 @@ assert del_res["msg"] == "book is successfully deleted"
 
 se = requests.session()
 se.auth = auth=('adityakakade21',getPassword())
-url = "https://api.github.com/user"
-github_response = requests.get(url,verify=False)
+url = "https://api.github.com/users"
+github_response = se.get(url,verify=False)
 
 print(github_response.json())
 print(github_response.status_code)

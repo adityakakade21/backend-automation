@@ -1,3 +1,5 @@
+import csv
+
 import paramiko as paramiko
 from utilities.configurations import *
 
@@ -42,6 +44,12 @@ stdin,stdout,stderr = ssh.exec_command("python script.py")
 #download the file to your system
 
 sftp.get("loanasa.csv", "outputFiles/loanasa.csv")
+
+with open('outputFiles/loanasa.csv') as csvFile:
+    csvReader = csv.reader(csvFile,delimiter=',')
+    for row in csvReader:
+        if row[0] == "32321":
+            assert row[1] == "rejected"
 
 ssh.close()
 

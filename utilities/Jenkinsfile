@@ -29,7 +29,14 @@ pipeline
             steps
 			{
                 git 'https://github.com/adityakakade21/backend-automation.git'
-                sh 'behave'
+                sh 'python3 behave'
+            }
+        }
+		stage('Report')
+		{
+            steps
+			{
+                allure includeProperties: false, jdk: '', results: [[path: 'AllureRepoers']]
             }
         }
     }

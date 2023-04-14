@@ -32,6 +32,13 @@ pipeline
                 sh 'behave'
             }
         }
+		stage('Report')
+		{
+            steps
+			{
+                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+            }
+        }
     }
 	post
 		{

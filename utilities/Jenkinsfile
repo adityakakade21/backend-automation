@@ -29,7 +29,7 @@ pipeline
             steps
 			{
                 git 'https://github.com/adityakakade21/backend-automation.git'
-                sh 'python3 behave'
+                sh 'behave'
             }
         }
     }

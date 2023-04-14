@@ -32,15 +32,13 @@ pipeline
                 sh 'behave'
             }
         }
-		stage('Report')
+    }
+	post
 		{
-		    steps {
-			script {
-			          sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
-					  sh 'allure serve AllureRepoers/'
-				   }
+		    always {
+			         archiveArtifacts artifacts: 'AllureRepoers/', followSymlinks: false
+
                   }
 
         }
-    }
 }

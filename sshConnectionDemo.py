@@ -43,7 +43,7 @@ stdin,stdout,stderr = ssh.exec_command("python script.py")
 
 #download the file to your system
 
-sftp.get("loanasa.csv", "outputFiles/loanasa.csv")
+sftp.get("Dockerfile", "outputFiles/Dockerfile")
 
 with open('outputFiles/loanasa.csv') as csvFile:
     csvReader = csv.reader(csvFile,delimiter=',')

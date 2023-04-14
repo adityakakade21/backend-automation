@@ -36,13 +36,8 @@ pipeline
 		{
 		    steps {
 			script {
-            allure([
-                    includeProperties: false,
-                    jdk: '',
-                    properties: [],
-                    reportBuildPolicy: 'ALWAYS',
-                    results: [[path: 'target/allure-results']]
-				   ])
+			          sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+					  sh 'allure serve AllureRepoers/'
 				   }
                   }
 

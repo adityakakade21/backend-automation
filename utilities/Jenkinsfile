@@ -4,6 +4,7 @@ pipeline {
     dockerfile {
         filename 'Dockerfile'
         dir 'utilities'
+        }
     }
     stages {
         stage('Checkout') {

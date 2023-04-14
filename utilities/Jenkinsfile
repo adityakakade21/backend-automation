@@ -1,22 +1,33 @@
-pipeline {
-    agent {
-    // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
-    dockerfile {
+pipeline
+{
+    agent
+	{
+        dockerfile
+		{
         filename 'Dockerfile'
         dir 'utilities'
         }
     }
-    stages {
-        stage('Checkout') {
-            steps {
+    stages
+	{
+        stage('Checkout')
+		{
+            steps
+			{
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adityakakade21/backend-automation.git']])
             }
-        stage('log version info') {
-            steps {
+		}
+        stage('log version info')
+		{
+            steps
+			{
                 sh 'python --version'
             }
-        stage('Test') {
-            steps {
+		}
+        stage('Test')
+		{
+            steps
+			{
                 git 'https://github.com/adityakakade21/backend-automation.git'
                 sh 'python3 behave'
             }

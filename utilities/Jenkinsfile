@@ -39,13 +39,15 @@ pipeline
                 sh 'behave --junit --junit-directory JunitReports'
             }
         }
-        realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
-		{
-                sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
-        }
+
     }
 	post
 		{
+		    realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
+		     {
+                sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
+             }
+
 		    always {
 			         archiveArtifacts artifacts: 'AllureRepoers/', followSymlinks: false
 

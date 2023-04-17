@@ -32,20 +32,14 @@ pipeline
                 sh 'behave'
             }
         }
-
-
-    }
-	post
-		{
-
-			stage('Report generation')
+		stage('Report generation')
 		  {
             steps
 			{
                 sh 'behave --junit --junit-directory JunitReports'
             }
           }
-		    stage('Test Results')
+		stage('Test Results')
 		  {
 		    steps
 			{
@@ -56,9 +50,21 @@ pipeline
 			}
 		  }
 
+
+    }
+	post
+		{
+			failure {
+			           sh 'behave --junit --junit-directory JunitReports'
+					   realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
+		               {
+                           echo 'Test Results'
+                       }
+
+                    }
+
 			always {
 			         archiveArtifacts artifacts: 'AllureRepoers/', followSymlinks: false
-			         archiveArtifacts artifacts: 'JunitReports/', followSymlinks: false
 
                    }
 

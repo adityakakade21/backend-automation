@@ -36,8 +36,12 @@ pipeline
 		{
             steps
 			{
-                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+                sh 'behave --junit --junit-directory JunitReports'
             }
+        }
+        realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
+		{
+                sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
         }
     }
 	post

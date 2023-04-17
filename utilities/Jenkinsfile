@@ -39,6 +39,16 @@ pipeline
                 sh 'behave --junit --junit-directory JunitReports'
             }
         }
+        stage('Test Results')
+		{
+		    steps
+			{
+			  	realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
+		       {
+                  echo 'Test Results'
+               }
+			}
+		}
 
 
     }

@@ -39,16 +39,7 @@ pipeline
                 sh 'behave --junit --junit-directory JunitReports'
             }
         }
-        stage('Real time display')
-		{
-		    steps
-			{
-			  	realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
-		       {
-                  sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
-               }
-			}
-		}
+
 
     }
 	post

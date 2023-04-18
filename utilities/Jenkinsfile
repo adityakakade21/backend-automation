@@ -46,20 +46,25 @@ pipeline
 	post
 		{
 
-			always {
+            always {
 
 			         archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
+					 steps {
 			         try {
                                 sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
                                 stash name: 'AllureRepoers', includes: 'AllureRepoers/*'
                                 currentBuild.result = 'SUCCESS'
-                            } catch (e) {
+                         } catch (e)
+						 {
                                 stash name: 'AllureRepoers', includes: 'AllureRepoers/*'
                                 currentBuild.result = 'FAILED'
                                 throw e
                           }
 
-			       }
+						}
+
+
+	              }
 
 
         }

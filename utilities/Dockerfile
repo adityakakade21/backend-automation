@@ -1,4 +1,4 @@
-FROM python:latest
+FROM tomcat:latest
 USER root
 RUN apt-get update
 RUN apt-get install python3-pip -y

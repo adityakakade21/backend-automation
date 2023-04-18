@@ -29,7 +29,9 @@ pipeline
 		  {
             steps
 			{
-                allure jdk: 'java-11-openjdk', report: 'AllureRepoers/', results: [[path: 'AllureRepoers/']]
+                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+
+                sh 'allure serve AllureRepoers/'
             }
           }
     }

@@ -17,13 +17,6 @@ pipeline
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adityakakade21/backend-automation.git']])
             }
 		}
-        stage('log version info')
-		{
-            steps
-			{
-                sh 'python --version'
-            }
-		}
         stage('Test')
 		{
             steps

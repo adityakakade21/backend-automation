@@ -23,6 +23,7 @@ pipeline
 			{
                 git 'https://github.com/adityakakade21/backend-automation.git'
                 sh 'behave'
+                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
             }
         }
 		stage('Run Test') {
@@ -49,7 +50,7 @@ pipeline
             always {
 
 			         archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
-					 sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+
 
 	              }
 

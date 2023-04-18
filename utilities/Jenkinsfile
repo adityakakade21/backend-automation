@@ -29,7 +29,7 @@ pipeline
 		  {
             steps
 			{
-                sh 'behave --junit --junit-directory JunitReports'
+                allure jdk: 'java-11-openjdk', report: 'AllureRepoers/', results: [[path: 'AllureRepoers/']]
             }
           }
 		stage('Test Results')

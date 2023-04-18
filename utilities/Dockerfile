@@ -14,7 +14,8 @@ ENV JAVA_VERSION 1.8.0
 
 RUN apt-get install -y openjdk-8-jre
 
-ENV JAVA_HOME=/usr/lib/jvm/java
+ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+RUN export JAVA_HOME
 
 RUN wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz
 RUN tar xzvf apache-maven-3.9.1-bin.tar.gz

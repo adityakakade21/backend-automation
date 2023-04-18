@@ -12,7 +12,7 @@ RUN	apt-get install -y tar
 
 ENV JAVA_VERSION 1.8.0
 
-RUN apt-get install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel
+RUN apt-get install -y java-1.8.0-openjdk-devel
 
 ENV JAVA_HOME /usr/lib/jvm/java
 

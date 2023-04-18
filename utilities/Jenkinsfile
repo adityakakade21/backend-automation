@@ -17,6 +17,13 @@ pipeline
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adityakakade21/backend-automation.git']])
             }
 		}
+        stage('log version info')
+		{
+            steps
+			{
+                sh 'python --version'
+            }
+		}
         stage('Test')
 		{
             steps
@@ -25,23 +32,39 @@ pipeline
                 sh 'behave'
             }
         }
-		stage('Report generation')
-		  {
-            steps
-			{
-                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+		stage('Run Test') {
+                    steps {
+                        script {
+                            try {
+                                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+                                stash name: 'AllureRepoers', includes: 'AllureRepoers/*'
+                                currentBuild.result = 'SUCCESS'
+                            } catch (e) {
+                                stash name: 'AllureRepoers', includes: 'AllureRepoers/*'
+                                currentBuild.result = 'FAILED'
+                                throw e
+                            }
+                        }
+                    }
+                }
 
-                sh 'allure serve AllureRepoers/'
-            }
-          }
+
     }
 	post
 		{
 
 			always {
-			         archiveArtifacts artifacts: 'AllureRepoers/', followSymlinks: false
-
-                   }
+            unstash 'AllureRepoers' //extract results
+            script {
+                allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'AllureRepoers']]
+            ])
+            }
+        }
 
         }
 }

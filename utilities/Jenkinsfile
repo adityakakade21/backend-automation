@@ -47,17 +47,9 @@ pipeline
 		{
 
 			always {
-            unstash 'AllureRepoers' //extract results
-            script {
-                allure([
-                includeProperties: false,
-                jdk: '',
-                properties: [],
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'AllureRepoers']]
-            ])
-            }
-        }
+
+			archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
+
 
         }
 }

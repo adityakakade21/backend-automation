@@ -33,8 +33,8 @@ destinationPath = "script.py"
 sourcePath = "batchFiles/script.py"
 sftp.put(sourcePath, destinationPath)
 
-destinationPath = "loanasa.csv"
-sourcePath = "batchFiles/loanasa.csv"
+destinationPath = "Dockerfile"
+sourcePath = "utilities/Dockerfile"
 sftp.put(sourcePath, destinationPath)
 
 #trigger the batch commands
@@ -43,7 +43,7 @@ stdin,stdout,stderr = ssh.exec_command("python script.py")
 
 #download the file to your system
 
-sftp.get("Dockerfile", "outputFiles/Dockerfile")
+#sftp.get("Dockerfile", "outputFiles/Dockerfile")
 
 with open('outputFiles/loanasa.csv') as csvFile:
     csvReader = csv.reader(csvFile,delimiter=',')

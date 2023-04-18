@@ -49,7 +49,7 @@ pipeline
             always {
 
 			         archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
-					 steps {
+					 step {
 			         try {
                                 sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
                                 stash name: 'AllureRepoers', includes: 'AllureRepoers/*'

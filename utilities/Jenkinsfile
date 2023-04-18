@@ -48,7 +48,9 @@ pipeline
 
 			always {
 
-			archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
+			         archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
+
+			       }
 
 
         }

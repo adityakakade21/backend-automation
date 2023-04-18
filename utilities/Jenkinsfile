@@ -38,7 +38,7 @@ pipeline
 			{
 			  	realtimeJUnit(keepLongStdio: true, parseInterval: 1, testResults: 'JunitReports/*.xml')
 		       {
-                  echo 'Test Results'
+                  sh 'mvn -Dmaven.test.failure.ignore=true clean verify'
                }
 			}
 		  }

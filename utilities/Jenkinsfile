@@ -32,7 +32,6 @@ pipeline
                 allure jdk: 'java-11-openjdk', report: 'AllureRepoers/', results: [[path: 'AllureRepoers/']]
             }
           }
-
     }
 	post
 		{

@@ -17,16 +17,21 @@ pipeline
                 checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/adityakakade21/backend-automation.git']])
             }
 		}
-        stage('Test')
+        stage('Run Test')
 		{
             steps
 			{
-                git 'https://github.com/adityakakade21/backend-automation.git'
-                sh 'behave'
-                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+			    git 'https://github.com/adityakakade21/backend-automation.git'
+				script {
+				        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE')
+						{
+					     sh 'behave'
+						}
+
+                       }
             }
-        }
-		stage('Run Test') {
+		}
+		stage('Run Report') {
                     steps {
                         script {
                             try {
@@ -41,8 +46,6 @@ pipeline
                         }
                     }
                 }
-
-
     }
 	post
 		{

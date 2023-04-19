@@ -34,14 +34,9 @@ pipeline
 		stage('Run Report') {
                     steps {
                         script {
-                            try {
+                            {
                                 sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
-                                stash name: 'AllureRepoers', includes: 'AllureRepoers/*'
-                                currentBuild.result = 'SUCCESS'
-                            } catch (e) {
-                                stash name: 'AllureRepoers', includes: 'AllureRepoers/*'
-                                currentBuild.result = 'FAILED'
-                                throw e
+
                             }
                         }
                     }

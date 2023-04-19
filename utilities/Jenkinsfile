@@ -34,10 +34,10 @@ pipeline
 		stage('Run Report') {
                     steps {
                         script {
-                            {
+
                                 sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
 
-                            }
+
                         }
                     }
                 }

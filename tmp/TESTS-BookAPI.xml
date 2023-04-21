@@ -1,0 +1,57 @@
+<testsuite name="BookAPI.Verify if Books are added and deleted using Library API" tests="3" errors="0" failures="0" skipped="0" time="1.563401" timestamp="2023-04-21T09:15:30.470002" hostname="1d190a2277eb"><testcase classname="BookAPI.Verify if Books are added and deleted using Library API" name="Verify AddBook functionality" status="passed" time="0.543387"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @library
+  Scenario: Verify AddBook functionality
+    Given the book details which need to be added in the Library ... passed in 0.000s
+    When when we execute AddBook PostAPI method ... passed in 0.543s
+    Then book is successfully added ... passed in 0.000s
+    And status code of response should be 200 ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+{'Msg': 'successfully added', 'ID': 'gig8righ678'}
+gig8righ678
+200
+
+]]>
+</system-out></testcase><testcase classname="BookAPI.Verify if Books are added and deleted using Library API" name="Verify AddBook functionality -- @1.1 " status="passed" time="0.512028"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @library
+  Scenario Outline: Verify AddBook functionality -- @1.1 
+    Given the book details with grger and 55677 ... passed in 0.001s
+    When when we execute AddBook PostAPI method ... passed in 0.511s
+    Then book is successfully added ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+{'Msg': 'successfully added', 'ID': 'grger55677'}
+grger55677
+
+]]>
+</system-out></testcase><testcase classname="BookAPI.Verify if Books are added and deleted using Library API" name="Verify AddBook functionality -- @1.2 " status="passed" time="0.507987"><system-out>
+<![CDATA[
+@scenario.begin
+
+  @library
+  Scenario Outline: Verify AddBook functionality -- @1.2 
+    Given the book details with uydf and 21233 ... passed in 0.000s
+    When when we execute AddBook PostAPI method ... passed in 0.507s
+    Then book is successfully added ... passed in 0.000s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+{'Msg': 'successfully added', 'ID': 'uydf21233'}
+uydf21233
+
+]]>
+</system-out></testcase></testsuite>

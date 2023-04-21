@@ -30,7 +30,7 @@ def step_impl(context):
     response_json = context.response.json()
     context.book_id = response_json['ID']
     print(context.book_id)
-    assert response_json["Msg"] == "successfully added"
+    assert response_json["Msg"] == "successfully not added"
 
 
 @given('I have GitHub credentials')

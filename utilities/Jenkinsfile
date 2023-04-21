@@ -35,7 +35,7 @@ pipeline
                     steps {
                         script {
 
-                                sh 'behave  --no-capture -f allure_behave.formatter:AllureFormatter -o AllureRepoers'
+                                sh 'behave --junit --junit-directory JunitReports'
 
 
                         }
@@ -48,6 +48,7 @@ pipeline
             always {
 
 			         archiveArtifacts artifacts: 'AllureRepoers/*', followSymlinks: false
+			         archiveArtifacts artifacts: 'JunitReports/*', followSymlinks: false
 
 
 	              }
